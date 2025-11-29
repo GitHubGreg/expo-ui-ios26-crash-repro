@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.greg-mtl.expo-ui-crash-repro"
     },
     "android": {
       "adaptiveIcon": {

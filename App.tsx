@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button } from '@expo/ui/swift-ui';
+import { Button, Host } from '@expo/ui/swift-ui';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,15 +60,17 @@ export default function App() {
           options={({ navigation }) => ({
             title: 'Modal',
             presentation: 'modal',
-            // This SwiftUI Button causes the crash on iOS 26
+            // This SwiftUI Button in Host wrapper causes the crash on iOS 26
             headerLeft: () => (
-              <Button
-                onPress={() => navigation.goBack()}
-                systemImage="xmark"
-                variant="glass"
-                controlSize="small"
-                role="cancel"
-              />
+              <Host style={{ width: 44, height: 44 }}>
+                <Button
+                  onPress={() => navigation.goBack()}
+                  systemImage="xmark"
+                  variant="glass"
+                  controlSize="small"
+                  role="cancel"
+                />
+              </Host>
             ),
           })}
         />
